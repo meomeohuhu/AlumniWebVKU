@@ -1,0 +1,431 @@
+
+    /* Tổng quát */
+    body.new-style {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #f0f0f5;
+        color: #333;
+    }
+
+    header.new-style {
+        text-align: center;
+        background: linear-gradient(135deg, #0056b3, #007bff);
+        color: #fff;
+        padding: 40px 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+    }
+
+    h1.new-style {
+        margin: 0;
+        font-size: 2.5rem;
+        font-weight: bold;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+
+    main.news-events-container.new-style {
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+        padding: 0 20px;
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    /* Cột Tin tức */
+    .news-column.new-style, .events-column.new-style {
+        flex: 1;
+    
+        padding: 25px;
+        border-radius: 16px;
+      
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: flex;
+        flex-direction: column;
+    }
+
+   
+
+    h2.new-style {
+        text-align: left;
+        margin-bottom: 30px;
+        color: #b30000;
+        font-size: 2rem;
+        font-weight: bold;
+        border-bottom: 3px solid #b30000;
+        display: inline-block;
+        padding-bottom: 8px;
+    }
+    
+
+    /* Cột Sự kiện (Slider Section) */
+    .events-column.new-style {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .slider-container {
+        display: flex;
+        transition: transform 0.6s ease-in-out;
+    }
+
+    .event-item.new-style {
+        min-width: 500px;
+        background: #f9f9f9;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        padding: 25px;
+        margin-right: 25px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .event-item.new-style:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .event-item.new-style img {
+        width: 100%;
+        height: 230px;
+        object-fit: cover;
+        border-radius: 12px;
+        margin-bottom: 15px;
+    }
+
+    .event-item.new-style h3 {
+        margin: 10px 0;
+        font-size: 1.6rem;
+        font-weight: bold;
+        color: #333;
+        text-align: center;
+    }
+
+    /* Tin tức Box */
+    .news-item.new-style {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 25px;
+        background: #fff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .news-item.new-style:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .news-item.new-style img {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    .news-item.new-style div {
+        flex: 1;
+    }
+
+    .news-item.new-style h3 {
+        margin: 0;
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: #333;
+    }
+
+    /* Arrow Styles */
+    .arrow-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 14px;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 10;
+        transition: background-color 0.3s;
+        font-size: 1.5rem;
+    }
+
+    .arrow-left {
+        left: 20px;
+    }
+
+    .arrow-right {
+        right: 20px;
+    }
+
+    .arrow-btn:hover {
+        background-color: rgba(0, 0, 0, 0.85);
+    }
+
+    /* Media Query for Responsive */
+    @media (max-width: 768px) {
+        .event-item.new-style {
+            min-width: 270px;
+        }
+
+        .news-item.new-style {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .news-item.new-style img {
+            width: 90px;
+            height: 90px;
+        }
+    }
+    /* Đặt nền và căn chỉnh toàn bộ nội dung */
+    .container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 40px; /* Thêm khoảng cách giữa hàng thống kê và nội dung dưới */
+        }
+
+        .stat-card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: center;
+            width: 300px;
+            transition: transform 0.2s ease-in-out;
+            margin: 30px;
+
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-card img {
+            width: 50px;
+            margin-bottom: 15px;
+        }
+
+        .stat-card h3 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #b30000;
+            margin: 0;
+            padding: 10px;
+        }
+
+        .stat-card p {
+            font-size: 16px;
+            color: #b30000;
+            margin: 5px 0 0;
+
+        }
+        /*tuyển dụng*/
+    
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f5f5f5;
+                margin: 0;
+                padding: 0;
+            }
+    
+            .job-listing-container {
+                width: 95%;
+                margin: auto;
+                padding: 20px;
+            }
+    
+            .job-card-wrapper {
+                display: flex;
+                background-color: #ffffff;
+                border: 1px solid #e0e0e0;
+                border-radius: 8px;
+                padding: 16px;
+                margin-bottom: 16px;
+                align-items: center;
+            }
+    
+            .company-logo-img {
+                width: 400px;
+                height: auto;
+                margin-right: 20px;
+                border-radius: 8px;
+            }
+    
+            .job-info {
+                flex-grow: 1;
+            }
+    
+            h4 {
+                color: #333;
+                font-size: 1.2em;
+                margin: 0;
+            }
+    
+            .action-buttons {
+                display: flex;
+                align-items: center;
+                gap: 10px; /* Space between buttons */
+                margin-top: 10px;
+            }
+    
+            .view-details-link {
+                color: #007bff;
+                font-weight: bold;
+                text-decoration: none;
+                transition: color 0.3s;
+                display: flex;
+                align-items: center;
+            }
+    
+            .view-details-link:hover {
+                color: #0056b3;
+            }
+    
+            .apply-button {
+                background-color: #007bff;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 4px;
+                cursor: pointer;
+                font-weight: bold;
+                transition: background-color 0.3s;
+                display: flex;
+                align-items: center;
+                gap: 5px;
+            }
+    
+            .apply-button.active:hover {
+                background-color: #0056b3;
+            }
+    
+            .apply-button.disabled {
+                background-color: #d3d3d3;
+                color: #a0a0a0;
+                cursor: not-allowed;
+            }
+    
+            .expired .apply-button {
+                background-color: #d3d3d3;
+                color: #a0a0a0;
+                cursor: not-allowed;
+            }
+    
+            .expired .expired-text {
+                color: red;
+                font-weight: bold;
+            }
+    
+            .remaining-time {
+                color: #333;
+                font-weight: bold;
+            }
+    
+            p {
+                margin: 4px 0;
+            }
+    
+            .icon {
+                margin-right: 5px;
+                color: #007bff;
+            }
+/*câu lạc bộ*/
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+   
+    .main-container {
+        max-width: 900px;
+        margin: 0 auto;
+        background-color: white;
+        padding: 30px;
+        
+    }
+
+    h1 {
+        font-size: 28px;
+        color: #333;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .club-details {
+        display: flex;
+        gap: 30px;
+        margin-top: 30px;
+        justify-content: center;
+    }
+
+    .club-item {
+        background-color: #fafafa;
+        padding: 30px;
+        border-radius: 8px;
+        position: relative;
+        text-align: center;
+        padding-top: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        width: 300px;
+    }
+
+    .club-image {
+        width: 100%;
+        height: 100px; /* Adjust the height of the image */
+        object-fit: cover; /* Ensures the image fills the container while maintaining its aspect ratio */
+        border-radius: 8px; /* Rounded corners for the image */
+    }
+
+    p {
+        font-size: 16px;
+        line-height: 1.8;
+        margin-top: 15px;
+      
+        margin-bottom: 15px;
+    }
+
+    .view-button {
+        background-color: #04a8d2;
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        font-size: 14px;
+        border-radius: 5px;
+        cursor: pointer;
+        display: block;
+        margin: 20px auto;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: background-color 0.3s ease;
+    }
+
+    .view-button:hover {
+        background-color: #32d3ff;
+    }
+
+    /* Responsive design for small screens */
+    @media (max-width: 768px) {
+        .club-details {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .club-item {
+            width: 100%;
+            padding-top: 80px;
+        }
+
+        .view-button {
+            font-size: 16px;
+            padding: 10px 20px;
+        }
+    }

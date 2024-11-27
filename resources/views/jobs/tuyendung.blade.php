@@ -133,44 +133,28 @@
     </style>
 </head>
 <body>
-    <div class="job-listing">
-        
-
-        <!-- Second Job Card for a Software Company in Da Nang -->
-        <div class="job-card expired">
-            <img src="https://freelancervietnam.vn/wp-content/uploads/2019/05/fpt-software-fsoft-260452.jpg" alt="DaNang Software Solutions" class="company-logo">
-            <div class="job-details">
-                <h3>FPT Software Danang tuyển dụng</h3>
-                <p>Nhà phát triển phần mềm FPT Software</p>
-                <p><i class="bi bi-currency-dollar icon"></i><strong>Lương:</strong> 18,000,000 - 35,000,000 VND</p>
-                <p><i class="bi bi-geo-alt icon"></i><strong>Địa điểm:</strong> Đà Nẵng</p>
-                <p><i class="bi bi-calendar icon"></i><strong>Thời gian:</strong> 01/09/2024 - 30/10/2024</p>
-                <p><i class="bi bi-briefcase icon"></i><strong>Kinh nghiệm:</strong> Không yêu cầu kinh nghiệm</p>
-                <p class="expired-text">Đã hết hạn ứng tuyển</p>
-                <div class="button-group">
-                    <a href="{{ route('chitiettuyendung') }}" class="detail-link"><i class="bi bi-info-circle"></i> Xem chi tiết</a>
-                    <button class="apply-button disabled" disabled><i class="bi bi-send"></i> Ứng tuyển</button>
-                </div>
-            </div>
-        </div>
-        <!-- First Job Card for a Software Company in Da Nang -->
-        <div class="job-card">
-            <img src="https://top10danang.com/wp-content/uploads/2023/01/cong-ty-phan-mem-enclave-cong-ty-it-o-da-nang-chat-luong-top10danang.jpg.webp" alt="Tech Innovators" class="company-logo">
-            <div class="job-details">
-                <h3>Công ty phần mềm Enclave tuyển dụng</h3>
-                <p></p>
-                <p><i class="bi bi-currency-dollar icon"></i><strong>Lương:</strong> 15,000,000 - 30,000,000 VND</p>
-                <p><i class="bi bi-geo-alt icon"></i><strong>Địa điểm:</strong> Đà Nẵng</p>
-                <p><i class="bi bi-calendar icon"></i><strong>Thời gian:</strong> 01/11/2024 - 15/12/2024</p>
-                <p><i class="bi bi-briefcase icon"></i><strong>Kinh nghiệm:</strong> Tối thiểu 2 năm</p>
-                <p class="remaining-days">Còn 20 ngày để ứng tuyển</p>
-                <div class="button-group">
-                    <a href="{{ route('chitiettuyendung') }}" class="detail-link"><i class="bi bi-info-circle"></i> Xem chi tiết</a>
-                    <button class="apply-button active"><i class="bi bi-send"></i> Ứng tuyển</button>
-                </div>
+<div class="job-listing">
+    @foreach ($tuyendungs as $tuyendung)
+    <div class="job-card">
+        <img src="{{$tuyendung->image}}" alt="{{ $tuyendung->title }}" class="company-logo">
+        <div class="job-details">
+            <h3>{{ $tuyendung->title }}</h3>
+            <p><strong>Lương:</strong> {{ $tuyendung->salary }} VND</p>
+            <p><strong>Địa điểm:</strong> {{ $tuyendung->location }}</p>
+            <p><strong>Thời gian:</strong> {{ $tuyendung->time }}</p>
+            <p><strong>Kinh nghiệm:</strong> {{ $tuyendung->experience }}</p>
+            <div class="button-group">
+                <!-- Liên kết đến chi tiết công việc, truyền id -->
+                <a href="{{ route('chitiettuyendung', $tuyendung->id) }}" class="detail-link">
+                    <i class="bi bi-info-circle"></i> Xem chi tiết
+                </a>
+                <button class="apply-button"><i class="bi bi-send"></i> Ứng tuyển</button>
             </div>
         </div>
     </div>
+    @endforeach
+</div>
+
 </body>
 </html>
 

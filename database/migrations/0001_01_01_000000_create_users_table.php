@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique(); // Tên tài khoản phải là duy nhất
-            $table->string('email')->unique(); // Email duy nhất
             $table->string('password'); // Mật khẩu
             $table->rememberToken(); // Token để ghi nhớ đăng nhập
             $table->timestamps(); // Thời gian tạo và cập nhật
@@ -30,6 +29,7 @@ return new class extends Migration
             $table->year('enrollment_year')->nullable(); // Năm nhập học (đặt tên rõ nghĩa hơn)
             $table->string('education_system')->nullable();
             $table->string('level')->nullable();
+            $table->string('image')->nullable();
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
@@ -59,4 +59,5 @@ return new class extends Migration
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
     }
+    
 };

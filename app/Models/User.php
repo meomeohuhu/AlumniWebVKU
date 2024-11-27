@@ -23,12 +23,12 @@ class User extends Authenticatable
         'major', 
         'faculty', 
         'name', 
-        'email', 
         'birthdate', 
         'enrollment_year', 
         'education_system', 
         'password',
         'level',
+        'image',
     ];
 
     /**
@@ -53,5 +53,13 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function forums()
+{
+    return $this->hasMany(Forum::class);
+}
+public function comments()
+{
+    return $this->hasMany(Comment::class);
+}
     
 }

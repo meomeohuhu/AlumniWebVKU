@@ -77,16 +77,16 @@
                     </div>
                     <div class="form-group">
                         <label for="user_name">Tên Đăng Nhập</label>
-                        <input type="text" name="name" id="user_name" placeholder="Ví dụ: dat0321" required>
+                        <input type="email" name="name" id="user_name" placeholder="example@vku.udn.vn" required>
                     </div>
                 </div>
 
                 <!-- Cột bên phải -->
                 <div class="form-column">
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="email">Email</label>
                         <input type="email" name="email" id="email" placeholder="Ví dụ: example@vku.udn.vn" required>
-                    </div>
+                    </div> -->
                     
                     <div class="form-group">
                         <label for="birthdate">Ngày sinh</label>

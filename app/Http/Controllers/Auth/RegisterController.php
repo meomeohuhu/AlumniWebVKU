@@ -42,7 +42,6 @@ class RegisterController extends Controller
             'major' => 'required|string|max:255',
             'faculty' => 'required|string|max:255',
             'name' => 'required|string|max:255|unique:users',
-            'email' => 'required|string|email|max:255|unique:users',
             'birthdate' => 'required|date_format:d/m/Y',
             'enrollment_year' => 'required|integer',
             'education_system' => 'required|string|max:255',
@@ -51,24 +50,25 @@ class RegisterController extends Controller
     }
 
     protected function create(array $data)
-    {
-        try {
-            return User::create([
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => Hash::make($data['password']),
-                'fullname' => $data['fullname'],
-                'birthdate' => Carbon::createFromFormat('d/m/Y', $data['birthdate'])->format('Y-m-d'),
-                'phone' => $data['phone'],
-                'major' => $data['major'],
-                'faculty' => $data['faculty'],
-                'enrollment_year' => $data['enrollment_year'],
-                'education_system' => $data['education_system'],
-                'level' => '3',
-            ]);
-        } catch (\Exception $e) {
-            \Log::error('Error creating user: ' . $e->getMessage());
-            return false;
-        }
+{
+    try {
+        return User::create([
+            'name' => $data['name'],
+            'password' => Hash::make($data['password']),
+            'fullname' => $data['fullname'],
+            'birthdate' => Carbon::createFromFormat('d/m/Y', $data['birthdate'])->format('Y-m-d'),
+            'phone' => $data['phone'],
+            'major' => $data['major'],
+            'faculty' => $data['faculty'],
+            'enrollment_year' => $data['enrollment_year'],
+            'education_system' => $data['education_system'],
+            'level' => '3',
+            'image' => 'uploads/1732343122_user (1).png', // Đường dẫn tới avatar mặc định
+        ]);
+    } catch (\Exception $e) {
+       
+        return false;
     }
+}
+
 }

@@ -35,7 +35,7 @@ class LoginController extends Controller
 
             // Kiểm tra mật khẩu đã được mã hóa hay chưa và đăng nhập
             if (Auth::attempt(['name' => $username, 'password' => $password])) {
-                return redirect()->route('app');  // Đường dẫn chuyển hướng khi đăng nhập thành công
+                return redirect()->route('home');  // Đường dẫn chuyển hướng khi đăng nhập thành công
             } else {
                 return redirect('login')->with('error', 'Tài khoản hoặc mật khẩu không đúng');
             }

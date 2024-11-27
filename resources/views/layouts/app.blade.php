@@ -44,17 +44,14 @@
 
                     <div class="dropdown">
                         <a href="javascript:void(0)" class="login dropdown-toggle" onclick="toggleDropdown()">
-                            Xin chào, {{ Auth::user()->name }}!
+                            Xin chào {{ Auth::user()->fullname }}!
                             <i class="bi bi-caret-down-fill"></i>
                         </a>
                         <ul class="menu-items" id="userDropdown">
-                            <li><a href="#">Cài đặt & quyền riêng tư</a></li>
-                            <li><a href="#">Trợ giúp & hỗ trợ</a></li>
-                            <li><a href="#">Đóng góp ý kiến</a></li>
+                            <li><a href="{{route('user')}}">Trang cá nhân</a></li>
                             @if(Auth::user()->level === '1')
-                                <!-- Menu dành riêng cho admin -->
-                                <li><a href="{{ route('createPost') }}">Đăng bài</a></li>
                                 <li><a href="">Quản lý thành viên</a></li>
+                                <li><a href="{{ route('index') }}">Dashboard</a></li>
                             @endif
                             <li>
                                 <form action="{{ route('logout') }}" method="POST">
@@ -110,7 +107,7 @@
                     <a href="{{ route('jobs') }}"><i class="bi bi-briefcase"></i> Cơ hội việc làm</a>
                     <ul class="submenu">
                         <li><a href="#">Giới thiệu việc làm</a></li>
-                        <li><a href="#">Tuyển dụng</a></li>
+                        <li><a href="{{ route('tuyendung') }}">Tuyển dụng</a></li>
                         <li><a href="#">Đối tác</a></li>
                     </ul>
                 </li>
@@ -121,41 +118,10 @@
     <!-- Nội dung chính -->
     <div class="content">
         <div class="sidebar">
-            <h3 id="sidebar-title">Giới thiệu</h3>
-            <ul class="submenu">
-                <li><a href="{{ route('gioithieumangluoi') }}">Giới thiệu mạng lưới</a></li>
-                <li><a href="{{ route('bandieuhanh') }}">Ban điều hành</a></li>
-                <li><a href="{{ route('quyenloivanghiavu') }}">Quyền lợi và nghĩa vụ</a></li>
-            </ul>
-
-            <h3 id="sidebar-title">Diễn đàn</h3>
-
-            <h3 id="sidebar-title">Tin tức</h3>
-            <ul class="submenu">
-                <li><a href="{{ route('thongbao') }}">Thông báo</a></li>
-                <li><a href="#">Hoạt động</a></li>
-                <li><a href="#">Vinh danh</a></li>
-            </ul>
-
-            <h3 id="sidebar-title">Sự kiện</h3>
-            <ul class="submenu">
-                <li><a href="#">Sắp tới</a></li>
-                <li><a href="#">Đang diễn ra</a></li>
-                <li><a href="#">Đã kết thúc</a></li>
-            </ul>
-
-            <h3 id="sidebar-title">Mạng lưới</h3>
-            <ul class="submenu">
-                <li><a href="#">Câu lạc bộ</a></li>
-                <li><a href="#">Ban liên lạc các Ngành</a></li>
-            </ul>
-
-            <h3 id="sidebar-title">Cơ hội việc làm</h3>
-            <ul class="submenu">
-                <li><a href="#">Giới thiệu việc làm</a></li>
-                <li><a href="#">Tuyển dụng</a></li>
-                <li><a href="#">Đối tác</a></li>
-            </ul>
+           <section>
+           @yield('content2')
+           
+           </section>
 
         </div>
         <div class="main-content">
@@ -210,7 +176,11 @@
 
 
 
-
+<main class="py-4">
+    <div id="motification" class="alert mx-3 invisible">
+        Bạn đã đăng nhập
+    </div>
+</main>
 
 </body>
 
