@@ -176,11 +176,6 @@
 
 
 
-<main class="py-4">
-    <div id="motification" class="alert mx-3 invisible">
-        Bạn đã đăng nhập
-    </div>
-</main>
 
 </body>
 

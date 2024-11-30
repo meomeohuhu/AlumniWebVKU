@@ -10,7 +10,7 @@ class Event extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['content', 'start', 'end', 'category_id', 'image'];
+    protected $fillable = ['content','title','start', 'end', 'category_id', 'image'];
 
     // Chuyển đổi các trường 'start' và 'end' thành đối tượng Carbon
     protected $casts = [

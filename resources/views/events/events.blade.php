@@ -47,7 +47,7 @@
         .rounded-img {
             border-radius: 8px; /* Bo góc nhẹ cho ảnh */
             width: 320px;
-            max-height: 250px; /* Kích thước ảnh chữ nhật */
+            max-height: 300px; /* Kích thước ảnh chữ nhật */
         }
         /* Ẩn các đường viền dọc */
         table, th, td {
@@ -75,15 +75,14 @@
             <tr>
                 <td class="center">
                         <!-- Hiển thị ảnh sự kiện -->
-                        <img src="{{ asset('images/' . $event->photo) }}" class="rounded-img">
+                        <img src="{{( $event->image) }}" class="rounded-img">
                     </a>
                 </td>
-                <td>
+                <td>    
                     <!-- Hiển thị tiêu đề sự kiện -->
-                    <strong><a href="">{{ $event->title }}</a></strong><br>
-
+                    <strong style="color: #df0218"><a href="">{{ $event->title }}</a></strong><br>
                     <!-- Hiển thị nội dung sự kiện -->
-                    <div>{{($event->content) }}</div>
+                    <div style="color:#374f8a">{{ Str::limit($event->content, 200, ' ...') }}</div>
                 </td>
             </tr>
             @endforeach

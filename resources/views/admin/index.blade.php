@@ -143,7 +143,7 @@ body, html {
     <div class="sidebar">
         <h3>Admin Panel</h3>
         <ul>
-            <li><a href="{{ route('addashboard') }}" data-target="dashboard"><i class="fas fa-home"></i> Trang chủ</a></li>
+            <li><a href="{{ route('admin.dashboard') }}" data-target="dashboard"><i class="fas fa-home"></i> Trang chủ</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle"><i class="fas fa-cogs"></i> Quản lý</a>
                 <ul>
@@ -154,9 +154,9 @@ body, html {
                     <li><a href="{{ route('adsukien') }}" data-target="su-kien"><i class="fas fa-calendar-alt"></i> Sự Kiện</a></li>
                     <li><a href="{{ route('admangluoi') }}" data-target="mang-luoi"><i class="fas fa-network-wired"></i> Mạng Lưới</a></li>
                     <li><a href="{{ route('adcohoivieclam') }}" data-target="co-hoi-viec-lam"><i class="fas fa-briefcase"></i> Cơ Hội Việc Làm</a></li>
+                  
                 </ul>
             </li>
-            <li><a href="{{ route('adhoso') }}" class="menu-link" data-target="ho-so"><i class="fas fa-id-card"></i> Hồ sơ cá nhân</a></li>
         </ul>
     </div>
 

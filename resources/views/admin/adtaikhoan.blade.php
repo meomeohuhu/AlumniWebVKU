@@ -195,27 +195,33 @@
 
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script>
-        function editUser(userId) {
-            const row = document.getElementById(`user-${userId}`);
-            const cells = row.getElementsByClassName('editable');
+       function editUser(userId) {
+    const row = document.getElementById(`user-${userId}`);
+    const cells = row.getElementsByClassName('editable');
+    const confirmButtonExists = row.querySelector('.confirm-button'); // Kiểm tra nếu nút xác nhận đã tồn tại
 
-            for (let cell of cells) {
-                const field = cell.getAttribute('data-field');
-                const currentValue = cell.innerText;
+    // Nếu nút xác nhận chưa tồn tại, tiếp tục chỉnh sửa và tạo nút xác nhận
+    if (!confirmButtonExists) {
+        for (let cell of cells) {
+            const field = cell.getAttribute('data-field');
+            const currentValue = cell.innerText;
 
-                cell.innerHTML = `<input type="text" value="${currentValue}" data-field="${field}" name="${field}" />`;
-            }
-
-            const form = document.getElementById('mainForm');
-            form.action = `/update-user/${userId}`;
-            form.method = 'POST';
-            document.getElementById('formAction').value = 'edit';
-
-            const confirmButton = document.createElement('button');
-            confirmButton.innerText = 'Xác nhận';
-            confirmButton.type = 'submit';
-            row.cells[row.cells.length - 1].appendChild(confirmButton);
+            cell.innerHTML = `<input type="text" value="${currentValue}" data-field="${field}" name="${field}" />`;
         }
+
+        const form = document.getElementById('mainForm');
+        form.action = `/update-user/${userId}`;
+        form.method = 'POST';
+        document.getElementById('formAction').value = 'edit';
+
+        const confirmButton = document.createElement('button');
+        confirmButton.innerText = 'Xác nhận';
+        confirmButton.type = 'submit';
+        confirmButton.classList.add('confirm-button'); // Thêm class để nhận diện nút xác nhận
+        row.cells[row.cells.length - 1].appendChild(confirmButton);
+    }
+}
+
     </script>
 </div>
 @endsection

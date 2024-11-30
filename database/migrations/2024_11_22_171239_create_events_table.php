@@ -14,6 +14,7 @@ return new class extends Migration
     Schema::create('events', function (Blueprint $table) {
         $table->id();
         $table->text('content');
+        $table->string('title'); // Tiêu đề bài viết
         $table->dateTime('start');
         $table->dateTime('end');
         $table->string('image')->nullable(); // Thêm cột photo

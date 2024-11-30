@@ -46,8 +46,8 @@
         
         .rounded-img {
             border-radius: 8px; /* Bo góc nhẹ cho ảnh */
-            width: 200px;
-            max-height: 200px; /* Kích thước ảnh chữ nhật */
+            width: 90%; /* Tăng kích thước ảnh */
+    max-height: 90%; /* Tăng kích thước ảnh */
         }
         /* Ẩn các đường viền dọc */
         table, th, td {
@@ -81,10 +81,10 @@
                 </td>
                 <td>
                     <!-- Hiển thị tiêu đề -->
-                    <strong><a href="{{ route('ndthongbao', $item->id) }}">{{ $item->title }}</a></strong><br>
+                    <strong style="color: #df0218"><a href="{{ route('ndthongbao', $item->id) }}">{{ $item->title }}</a></strong><br>
 
                     <!-- Hiển thị nội dung -->
-                    <div>{{ $item->content }}</div>
+                    <div style="color:#374f8a">{{ $item->content }}</div>
                 </td>
             </tr>
             @endforeach

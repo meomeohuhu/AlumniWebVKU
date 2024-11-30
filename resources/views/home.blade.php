@@ -167,11 +167,11 @@
         <h2 class="new-style"><i class="bi bi-caret-right-fill"></i>Tin tức</h2>
 
         @foreach($news as $item)
-            <div class="news-item new-style">
+            <div class="news-item new-style" data-id="{{ $item->id }}"">
                 <img src="{{ $item->image }}" alt="{{ $item->title }}">
                 <div>
-                    <h3>{{ $item->title }}</h3>
-                    <p><strong>{{ $item->created_at->format('d/m/Y') }}</strong> - {{ $item->description }}</p>
+                    <h3 style="color: #df0218">{{ $item->title }}</h3>
+                    <p style="color:#374f8a">{{Str::limit($item->content, 30, ' ...') }}</p>
                 </div>
             </div>
         @endforeach
@@ -190,10 +190,10 @@
         @foreach($events as $event)
             <div class="event-item new-style">
                 <img src="{{ $event->image }}" alt="{{ $event->title }}">
-                <h3>{{ $event->title }}</h3>
-                <p><strong>Ngày diễn ra:</strong> {{ $event->start->format('d/m/Y') }}</p>
-                <p><strong>Địa điểm:</strong> {{ $event->location }}</p>
-                <a href="#" class="btn new-style">Xem chi tiết</a>
+                <h3 style="color: #df0218">{{ $event->title }}</h3>
+                <p style="color:#374f8a" ><strong>Ngày diễn ra:</strong> {{ $event->start->format('d/m/Y') }}</p>
+                <p style="color:#374f8a">{{ Str::limit($event->content, 200, ' ...') }}</p>
+                <a href="{{ route('events.show', ['id' => $event->id]) }}" class="btn new-style">Xem chi tiết</a>
             </div>
         @endforeach
     </div>
@@ -239,12 +239,12 @@
                 <div class="job-card-wrapper {{ \Carbon\Carbon::parse($recruitment->end_date)->isPast() ? 'expired' : '' }}">
                     <img src="{{ $recruitment->image }}" alt="{{ $recruitment->image }}" class="company-logo-img">
                     <div class="job-info">
-                        <h4>{{ $recruitment->company_name }} tuyển dụng</h4>
+                        <h4 style="color: #df0218">{{ $recruitment->company_name }} Tuyển Dụng</h4>
                         <p>{{ $recruitment->position }}</p>
-                        <p><i class="bi bi-currency-dollar icon"></i><strong>Lương:</strong> {{ $recruitment->salary }}</p>
-                        <p><i class="bi bi-geo-alt icon"></i><strong>Địa điểm:</strong> {{ $recruitment->location }}</p>
-                        <p><i class="bi bi-calendar icon"></i><strong>Thời gian:</strong> {{ $recruitment->start_date }} - {{ $recruitment->end_date }}</p>
-                        <p><i class="bi bi-briefcase icon"></i><strong>Kinh nghiệm:</strong> {{ $recruitment->experience_required }}</p>
+                        <p style="color:#374f8a"><i class="bi bi-currency-dollar icon"></i><strong>Lương:</strong> {{ $recruitment->salary }}</p>
+                        <p style="color:#374f8a"><i class="bi bi-geo-alt icon"></i><strong>Địa điểm:</strong> {{ $recruitment->location }}</p>
+                        <p style="color:#374f8a"><i class="bi bi-calendar icon"></i><strong>Thời gian:</strong> {{ $recruitment->time }}</p>
+                        <p style="color:#374f8a"><i class="bi bi-briefcase icon"></i><strong>Kinh nghiệm:</strong> {{ $recruitment->experience}}</p>
                         
                         <!-- Hiển thị trạng thái tuyển dụng -->
                         @if(\Carbon\Carbon::parse($recruitment->end_date)->isPast())
@@ -265,7 +265,7 @@
                 </div>
             @endforeach
         </div>
-        <a href="#">Xem thêm</a>
+        <a href={{route('tuyendung')}}>Xem thêm</a>
     </body>
 </section>
 </main>
@@ -363,4 +363,22 @@
 {{-- <script src="{{ asset('js/sidebar.js') }}"></script> --}}
 
 </body>
+<script>
+    // Lấy tất cả các phần tử có class là 'news-item'
+const newsItems = document.querySelectorAll('.news-item');
+
+newsItems.forEach(item => {
+    item.addEventListener('click', function () {
+        // Lấy ID từ thuộc tính data-id
+        const id = item.getAttribute('data-id');
+        if (id) {
+            // Tạo URL chi tiết bài viết
+            const url = `/news/ndthongbao/${id}`;
+            // Chuyển hướng đến trang chi tiết
+            window.location.href = url;
+        }
+    });
+});
+
+</script>
 </html>

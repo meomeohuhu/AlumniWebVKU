@@ -22,14 +22,16 @@
 
 <body>
     <article>
-        <h1>{{ $news->title }}</h1>
+        <h1 style="color: #df0218">{{ $news->title }}</h1>
         <p><em>{{ \Carbon\Carbon::parse($news->created_at)->format('d/m/Y') }}</em></p>
-        <p>{{ $news->content }}</p>
+        <p style="color:#374f8a">{{ $news->content }}</p>
         
-        <figure>
-            <img src="{{ asset('images/' . $news->image) }}" alt="Image">
-            <figcaption>Ảnh minh họa</figcaption>
-        </figure>
+        @if ($news->image)
+                        <!-- Hiển thị ảnh nếu có -->
+                        <img src="{{ $news->image_url }}" alt="News Image">
+
+                    @endif
+
     </article>
 </body>
 @endsection

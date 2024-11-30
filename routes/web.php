@@ -1,6 +1,7 @@
     <?php
 
     use App\Http\Controllers\EventController;
+    use Illuminate\Database\Eloquent\ModelNotFoundException;
     use Illuminate\Support\Facades\Route;
     use App\Http\Controllers\Auth\LoginController;
     use App\Http\Controllers\Auth\RegisterController;
@@ -139,11 +140,15 @@ Route::post('admin/board', [BoardController::class, 'store'])->name('board.store
 
 
     Route::get('news/ndthongbao/{id}', function ($id) {
-        // Lấy bài viết theo ID
         $news = News::findOrFail($id);
+        if ($news->image) {
+            // Thêm đường dẫn đầy đủ đến ảnh mà không có "images"
+            $news->image_url = url($news->image);
+        }
+    
         return view('news.ndthongbao', compact('news'));
     })->name('ndthongbao');
-
+    
     // Các route khác
     Route::get('/cbl', function () {
         return view('network.clb');
@@ -189,6 +194,8 @@ Route::post('admin/board', [BoardController::class, 'store'])->name('board.store
 
     // Route chi tiết tin tức
     Route::get('/news/{id}', [HomeController::class, 'showNews'])->name('news.detail');
+    Route::get('/events/{id}', [EventController::class, 'show'])->name('events.show');
+
 
 
     use App\Http\Controllers\Auth\UpdateController;
@@ -198,7 +205,7 @@ Route::post('admin/board', [BoardController::class, 'store'])->name('board.store
     Route::get('/user', [UpdateController::class, 'editProfile'])->name('profile.edit');
 
     // Route PUT để cập nhật hồ sơ
-    Route::get('/user/{id}', [UpdateController::class, 'updateProfile'])->name('profile.update');
+    Route::post('/user/{id}', [UpdateController::class, 'updateProfile'])->name('profile.update');
 
     // Route hiển thị hồ sơ cá nhân
     Route::get('/user', [UpdateController::class, 'editProfile'])->name('user');
@@ -315,12 +322,20 @@ Route::get('adbandieuhanh', function () {
     Route::get('adcohoivieclam', function () {
         return view('admin.adcohoivieclam');
     })->name('adcohoivieclam');
+    
     Route::get('addashboard', function () {
         return view('admin.addashboard');
     })->name('addashboard');
+    
     Route::get('adhoso', function () {
         return view('admin.adhoso');
     })->name('adhoso');
+
+
+
+
+
+
     Route::get('admangluoi', function () {
         return view('admin.admangluoi');
     })->name('admangluoi');
@@ -392,6 +407,8 @@ Route::get('adaddboard', function () {
     return view('admin.adaddboard');
 })->name('adaddboard');
 
+
+
 // Route để thêm thành viên vào Ban điều hành
 Route::post('admin/adaddboard', function (Request $request) {
 
@@ -447,3 +464,6 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
+use App\Http\Controllers\Admin\DashboardadController;
+
+Route::get('admin/dashboard', [DashboardadController::class, 'index'])->name('admin.dashboard');
